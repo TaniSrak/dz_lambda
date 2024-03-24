@@ -1,7 +1,7 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <functional>
 
-//сама функция
+//СЃР°РјР° С„СѓРЅРєС†РёСЏ
 double calculator(double arg1, double arg2, const std::function<double(double, double)>& operation)
 {
     return operation(arg1, arg2);
@@ -15,18 +15,18 @@ int main()
     double arg1, arg2;
     char operation;
 
-    std::cout << "Введите 1 аргумент: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ 1 Р°СЂРіСѓРјРµРЅС‚: ";
     std::cin >> arg1;
 
-    std::cout << "Введите 2 аргумент: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ 2 Р°СЂРіСѓРјРµРЅС‚: ";
     std::cin >> arg2;
 
-    std::cout << "Выберите математическую операцию (+, -, *, /): ";
+    std::cout << "Р’С‹Р±РµСЂРёС‚Рµ РјР°С‚РµРјР°С‚РёС‡РµСЃРєСѓСЋ РѕРїРµСЂР°С†РёСЋ (+, -, *, /): ";
     std::cin >> operation;
 
     std::function<double(double, double)> func;
 
-    //задаем лямбду в зависимости от операции
+    //Р·Р°РґР°РµРј Р»СЏРјР±РґСѓ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РѕРїРµСЂР°С†РёРё
     switch (operation)
     {
     case '+':
@@ -36,16 +36,16 @@ int main()
     case '*':
         func = [](double a, double b) { return a * b; }; break;
     case '/':
-        func = [](double a, double b) { return (b != 0) ? a / b : 0; }; break;// не даем деления на ноль
+        func = [](double a, double b) { return (b != 0) ? a / b : 0; }; break;// РЅРµ РґР°РµРј РґРµР»РµРЅРёСЏ РЅР° РЅРѕР»СЊ
     default:
-        std::cerr << "НЕльзя делить на ноль тупица " << std::endl;
+        std::cerr << "РќР•Р»СЊР·СЏ РґРµР»РёС‚СЊ РЅР° РЅРѕР»СЊ С‚СѓРїРёС†Р° " << std::endl;
         return 1;
     }
 
-    // вычисляем
+    // РІС‹С‡РёСЃР»СЏРµРј
     double result = calculator(arg1, arg2, func);
 
-    std::cout << "Результат: " << result << std::endl;
+    std::cout << "Р РµР·СѓР»СЊС‚Р°С‚: " << result << std::endl;
 
     return 0;
 }
